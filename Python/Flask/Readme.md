@@ -1,0 +1,3 @@
+# ECOMMERCE PRODUCT API SERVICE FLASK
+
+### Flask implementation is in progress....
