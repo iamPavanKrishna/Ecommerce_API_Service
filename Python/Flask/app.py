@@ -74,20 +74,20 @@ def productbycategory():
 THIRDPARTY SERVICE ROUTES
 """
 @app.route('/thirdparty/getallproducts', methods=['GET'])
-def getallproducts():
+def tpgetallproducts():
 
     return ThirdPartyProductService().getallproducts()
 
 
 @app.route('/thirdparty/getproduct', methods=['GET', 'POST'])
-def getproduct():
+def tpgetproduct():
     id =  request.args.get('id')
 
     return ThirdPartyProductService().getproductbyid(id)
 
 
 @app.route('/thirdparty/createproduct', methods=['GET', 'POST'])
-def createproduct():
+def tpcreateproduct():
     id = request.args.get('id')
     title = request.args.get('title')
     price = request.args.get('price')
@@ -99,27 +99,27 @@ def createproduct():
 
 
 @app.route('/thirdparty/updateproduct', methods=['GET', 'POST'])
-def updateproduct():
+def tpupdateproduct():
     id = request.args.get(id)
 
     return ThirdPartyProductService().updateproductbyid(id)
 
 
 @app.route('/thirdparty/deleteproduct', methods=['GET', 'POST'])
-def deleteproduct():
+def tpdeleteproduct():
     id = request.args.get('id')
 
     return ThirdPartyProductService().deleteproductbyid(id)
 
 
 @app.route('/thirdparty/getcategories', methods=['GET'])
-def getcategories():
+def tpgetcategories():
 
     return ThirdPartyProductService().getallcategories()
 
 
 @app.route('/thirdparty/productbycategory', methods=['GET', 'POST'])
-def productbycategory():
+def tpproductbycategory():
     category = request.args.get('category')
 
     return ThirdPartyProductService().getproductbycategory(category)
