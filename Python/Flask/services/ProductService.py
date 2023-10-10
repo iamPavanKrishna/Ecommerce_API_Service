@@ -1,7 +1,7 @@
 import zope.interface
 
 class ProductService(zope.interface.Interface):
-    zope.interface.Attribute('Attrizope')
+    zope.interface.Attribute('foo')
     def getallproducts():
         pass
     def getproductbyid(id):

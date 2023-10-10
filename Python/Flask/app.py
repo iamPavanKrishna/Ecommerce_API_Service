@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 from flask_cors import CORS, cross_origin
 import requests
 import subprocess
-from services import ThirdPartyProductService
+from services.ThirdPartyProductService import ThirdPartyProductService
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -76,14 +76,14 @@ THIRDPARTY SERVICE ROUTES
 @app.route('/thirdparty/getallproducts', methods=['GET'])
 def getallproducts():
 
-    return ThirdPartyProductService.getallproducts()
+    return ThirdPartyProductService().getallproducts()
 
 
 @app.route('/thirdparty/getproduct', methods=['GET', 'POST'])
 def getproduct():
     id =  request.args.get('id')
 
-    return ThirdPartyProductService.getproductbyid(id)
+    return ThirdPartyProductService().getproductbyid(id)
 
 
 @app.route('/thirdparty/createproduct', methods=['GET', 'POST'])
@@ -95,34 +95,34 @@ def createproduct():
     description = request.args.get('description')
     image = request.args.get('image')
 
-    return ThirdPartyProductService.createproduct(id, title, price, category, description, image)
+    return ThirdPartyProductService().createproduct(id, title, price, category, description, image)
 
 
 @app.route('/thirdparty/updateproduct', methods=['GET', 'POST'])
 def updateproduct():
     id = request.args.get(id)
 
-    return ThirdPartyProductService.updateproductbyid(id)
+    return ThirdPartyProductService().updateproductbyid(id)
 
 
 @app.route('/thirdparty/deleteproduct', methods=['GET', 'POST'])
 def deleteproduct():
     id = request.args.get('id')
 
-    return ThirdPartyProductService.deleteproductbyid(id)
+    return ThirdPartyProductService().deleteproductbyid(id)
 
 
 @app.route('/thirdparty/getcategories', methods=['GET'])
 def getcategories():
 
-    return ThirdPartyProductService.getallcategories()
+    return ThirdPartyProductService().getallcategories()
 
 
 @app.route('/thirdparty/productbycategory', methods=['GET', 'POST'])
 def productbycategory():
     category = request.args.get('category')
 
-    return ThirdPartyProductService.getproductbycategory(category)
+    return ThirdPartyProductService().getproductbycategory(category)
 
 
 if __name__ == "__main__":
