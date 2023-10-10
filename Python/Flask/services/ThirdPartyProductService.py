@@ -40,7 +40,7 @@ class ThirdPartyProductService():
     
 
     def updateproductbyid(id, title, price, category, description, image):
-        url = 'https://fakestoreapi.com/products'
+        url = f'https://fakestoreapi.com/products/{id}'
         data = {
                     'title': title,
                     'price': price,
@@ -59,7 +59,7 @@ class ThirdPartyProductService():
     
 
     def deleteproductbyid(id):
-        url = 'https://fakestoreapi.com/products'
+        url = f'https://fakestoreapi.com/products/{id}'
 
         resp = requests(url, json={
             "method":"DELETE",
