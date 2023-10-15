@@ -5,6 +5,6 @@ class ProductDto:
     id : str
     title : str
     price : float
-    category : str
+    url : str
+    currency: str
     description : str
-    image : str

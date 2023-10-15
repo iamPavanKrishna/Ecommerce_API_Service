@@ -3,6 +3,7 @@ from flask_cors import CORS, cross_origin
 import requests
 import subprocess
 from services.ThirdPartyProductService import ThirdPartyProductService
+from services.SelfProductService import SelfProductService
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -22,52 +23,44 @@ SELF PRODUCT SERVICE ROUTES
 @app.route('/self/getallproducts', methods=['GET'])
 def getallproducts():
 
-    return 'attach get all products service here'
+    return SelfProductService().getallproducts()
 
 
 @app.route('/self/getproduct', methods=['GET', 'POST'])
 def getproduct():
     id =  request.args.get('id')
 
-    return f'attach get product by id service here {id}'
+    return SelfProductService().getproductbyid(id)
 
 
 @app.route('/self/createproduct', methods=['GET', 'POST'])
 def createproduct():
-    id = request.args.get('id')
     title = request.args.get('title')
     price = request.args.get('price')
-    category = request.args.get('category')
+    url = request.args.get('url')
+    currency = request.args.get('currency')
     description = request.args.get('description')
-    image = request.args.get('image')
 
-    return f'attach create product service here, {id}, {title}, {price}, {category}, {description}, {image}'
+    return SelfProductService().createproduct(title, price, url, currency, description)
 
 
 @app.route('/self/updateproduct', methods=['GET', 'POST'])
 def updateproduct():
-    id = request.args.get(id)
+    id = request.args.get('id')
+    title = request.args.get('title')
+    price = request.args.get('price')
+    url = request.args.get('url')
+    currency = request.args.get('currency')
+    description = request.args.get('description')
 
-    return 'attach update product by id service here'
+    return SelfProductService().updateproductbyid(id, title, price, url, currency, description)
 
 
 @app.route('/self/deleteproduct', methods=['GET', 'POST'])
 def deleteproduct():
     id = request.args.get('id')
 
-    return 'attach delete product by id service here'
-
-
-@app.route('/self/getcategories', methods=['GET'])
-def getcategories():
-
-    return 'attach get categories service here'
-
-@app.route('/self/productbycategory', methods=['GET', 'POST'])
-def productbycategory():
-    category = request.args.get('category')
-
-    return 'attach product by category service here'
+    return SelfProductService().deleteproductbyid(id)
 
 
 """
